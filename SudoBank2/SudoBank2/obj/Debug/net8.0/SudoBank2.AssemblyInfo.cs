@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SudoBank2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bbf21af1912d62f1f30fdeabad385a86fc8bb946")]
 [assembly: System.Reflection.AssemblyProductAttribute("SudoBank2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SudoBank2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

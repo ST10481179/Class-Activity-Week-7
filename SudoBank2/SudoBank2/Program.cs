@@ -41,18 +41,16 @@ public static class BankValidator
 // 5. Describe the inheritance happening below and what it means.
 public partial class BankManager : IRepository
 {
-    private BankAccount[] _accounts = new BankAccount[100];
-    private int _accountCount = 0;
+    private List<BankAccount> _accounts = new List<BankAccount>();
 
     public void Create(BankAccount account)
     {
-        if (account == null || _accountCount >= _accounts.Length)
+        if (account == null)
         {
             // 6. What does this line below do in this context.
             throw new Exception();
         }
-        _accounts[_accountCount] = account;
-        _accountCount++;
+        _accounts.Add(account);
     }
 }
 
@@ -60,11 +58,11 @@ public partial class BankManager
 {
     public BankAccount Read(string accountNumber)
     {
-        for (int i = 0; i < _accountCount; i++)
+        foreach (var account in _accounts)
         {
-            if (_accounts[i].AccountNumber == accountNumber)
+            if (account.AccountNumber == accountNumber)
             {
-                return _accounts[i];
+                return account;
             }
         }
         throw new Exception();
@@ -79,25 +77,19 @@ public partial class BankManager
 
     public void Delete(string accountNumber)
     {
-        int indexToRemove = -1;
-        for (int i = 0; i < _accountCount; i++)
+        BankAccount accountToRemove = null;
+        foreach (var account in _accounts)
         {
-            if (_accounts[i].AccountNumber == accountNumber)
+            if (account.AccountNumber == accountNumber)
             {
-                indexToRemove = i;
+                accountToRemove = account;
                 break;
             }
         }
 
-        if (indexToRemove == -1) throw new Exception();
+        if (accountToRemove == null) throw new Exception();
 
-        for (int i = indexToRemove; i < _accountCount - 1; i++)
-        {
-            _accounts[i] = _accounts[i + 1];
-        }
-
-        _accounts[_accountCount - 1] = null;
-        _accountCount--;
+        _accounts.Remove(accountToRemove);
     }
 }
 
